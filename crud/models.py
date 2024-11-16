@@ -24,7 +24,17 @@ class Chef(models.Model):
     def __str__(self):
         return "Nombre: "+self.chef_name
 
+class MasaDisp(models.Model):
+    type=models.CharField(max_length=100,verbose_name="tipo")
+    created=models.DateTimeField(auto_now_add=True,verbose_name="Fecha de Creación")
+    updated=models.DateTimeField(auto_now=True,verbose_name="Fecha de Edición")
 
+    class Meta:
+        verbose_name="Masa"
+        verbose_name_plural="Masas"
+    
+    def __str__(self):
+        return self.type
     
 class Contenido(models.Model):
     name=models.CharField(max_length=100,verbose_name="nombre")
@@ -32,8 +42,8 @@ class Contenido(models.Model):
     updated=models.DateTimeField(auto_now=True,verbose_name="Fecha de Edición")
 
     class Meta:
-        verbose_name="Categoria"
-        verbose_name_plural="Categorias"
+        verbose_name="Contenido"
+        verbose_name_plural="Contenidos"
     
     def __str__(self):
         return self.name
@@ -44,6 +54,7 @@ class Pizza(models.Model):
     pizza_image=models.ImageField()
     pizza_price=models.CharField(max_length=10)
     Contain=models.ManyToManyField(Contenido,verbose_name="Contenido")
+    dough=models.ManyToManyField(MasaDisp,verbose_name="Masa")
     created=models.DateTimeField(auto_now_add=True,verbose_name="Fecha de Creación")
     updated=models.DateTimeField(auto_now=True,verbose_name="Fecha de Edición")
 

@@ -27,6 +27,32 @@
 				<p class="mt-5">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
 			</div>
 		</div>
+
+		{% comment %} FILTRO {% endcomment %}
+		<div>
+			<h1>Filtrar</h1>
+			<div>
+				<div style="display: flex;">
+					<h2><a href="">Carne</a></h2>
+					<h2 style="margin-left: 10px;margin-right: 10px">-</h2>
+					<h2><a href="">Vegetariana</a></h2>
+				</div>
+				<div style="display: flex;">
+					<h2><a href="">Masa Delgada</a></h2>
+					<h2 style="margin-left: 10px;margin-right: 10px">-</h2>
+					<h2><a href="">Masa Tradicional</a></h2>
+					<h2 style="margin-left: 10px;margin-right: 10px">-</h2>
+					<h2><a href="">Masa Premium</a></h2>
+				</div>
+				<hr>
+			</div>
+		</div>
+
+
+		{% comment %} Fin filtro {% endcomment %}
+
+
+
 		<div class="row">
 			{% for pizza in myPizzas %}
 				<div class="col-md-3 text-center ftco-animate">

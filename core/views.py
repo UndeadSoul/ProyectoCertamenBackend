@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from crud.models import Pizza
 from crud.models import Chef
 from crud.models import Post
+from crud.models import Contenido
+from crud.models import MasaDisp
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -39,10 +41,34 @@ def contact(request):
 
 def menu(request):
     pizzaList=Pizza.objects.all()
+    containList=Contenido.objects.all()
+    doughList=MasaDisp.objects.all()
     paginator=Paginator(pizzaList,4)
     pageNumber=request.GET.get("page")
     myPizzas=paginator.get_page(pageNumber)
-    return render(request,"core/menu.html",{'myPizzas':myPizzas})
+    return render(request,"core/menu.html",{'myPizzas':myPizzas,'containList':containList,'doughList':doughList})
+
+
+def contained(request,contain_id):
+    containList=Contenido.objects.all()
+    doughList=MasaDisp.objects.all()
+    thisContain=get_object_or_404(Contenido,id=contain_id)
+    pizzaList=Pizza.objects.filter(Contain=thisContain)
+    paginator=Paginator(pizzaList,4)
+    pageNumber=request.GET.get("page")
+    myPizzas=paginator.get_page(pageNumber)
+    return render(request,"core/menufiltered.html",{'myPizzas':myPizzas,'filter':thisContain,'containList':containList,'doughList':doughList})
+
+def doughType(request,dough_id):
+    containList=Contenido.objects.all()
+    doughList=MasaDisp.objects.all()
+    thisDough=get_object_or_404(MasaDisp,id=dough_id)
+    pizzaList=Pizza.objects.filter(dough=thisDough)
+    paginator=Paginator(pizzaList,4)
+    pageNumber=request.GET.get("page")
+    myPizzas=paginator.get_page(pageNumber)
+    return render(request,"core/menufiltered.html",{'myPizzas':myPizzas,'filter':thisDough,'containList':containList,'doughList':doughList})
+
 
 """def services(request):
     pizzaList=Pizza.objects.all()

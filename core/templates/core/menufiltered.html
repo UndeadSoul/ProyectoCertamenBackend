@@ -30,7 +30,7 @@
 
 		{% comment %} FILTRO {% endcomment %}
 		<div>
-			<h1>Filtrar</h1>
+			<h1>Filtrar - {{filter}}</h1>
 			<div>
 				<div style="display: flex;">
 					{% for c in containList %}
@@ -39,7 +39,7 @@
 				</div>
 				<div style="display: flex;">
 					{% for d in doughList %}
-					<h2 style="margin-left: 20px"><a href="">{{d.type}}</a></h2>
+					<h2 style="margin-left: 20px"><a href="{% url "menu-filter-dough" d.id %}">{{d.type}}</a></h2>
 					{% endfor %}
 				</div>
 				<hr>
@@ -47,6 +47,7 @@
 		</div>
 		{% comment %} Fin filtro {% endcomment %}
 
+		
 
 
 		<div class="row">

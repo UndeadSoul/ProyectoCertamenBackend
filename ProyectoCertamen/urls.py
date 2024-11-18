@@ -14,8 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from core import views
+from django.urls import include, path
+from core import views as views
+from registerlogin import views as viewsrl
+from django.contrib.auth.views import LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -30,6 +32,10 @@ urlpatterns = [
     #path('menu-filter/', views.menufiltered, name='menufiltered'),
     path('menu-filter-contain/<int:contain_id>/',views.contained,name="menu-filter-contain"),
     path('menu-filter-dough/<int:dough_id>/',views.doughType,name="menu-filter-dough"),
+    path("accounts/login/", viewsrl.LoginView.as_view(), name="login"),
+    path("accounts/register/", viewsrl.register, name="register"),
+    path("accounts/logout/", LogoutView.as_view(next_page="login"), name="logout"),
+    path("", include("registerlogin.urls")),
     #path('services/', views.services, name='services'),
 ]
 

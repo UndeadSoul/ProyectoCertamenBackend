@@ -28,13 +28,13 @@ class CustomLoginView(LoginView):
 
 @login_required
 def my_view(request):
-    # This view requires the user to be logged in
+    # Esta vista requiere que el usuario esté logeado
     return render(request, 'my_template.html', {'user': request.user})
 
 def another_view(request):
     if request.user.is_authenticated:
-        # User is logged in
+        # El usuario está logeado
         return render(request, 'logged_in_template.html', {'user': request.user})
     else:
-        # User is not logged in
+        # El usuario no está logeado
         return redirect('login')  # Redirect to login page

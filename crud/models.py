@@ -1,8 +1,7 @@
 from django.db import models
 
 # Create your models here.
-
-
+# Modelos primera evaluación
 class Post(models.Model):
     post_title=models.CharField(max_length=40)
     post_subtitle=models.CharField(max_length=80)
@@ -24,6 +23,7 @@ class Chef(models.Model):
     def __str__(self):
         return "Nombre: "+self.chef_name
 
+# Modelos de la segunda evaluación
 class MasaDisp(models.Model):
     type=models.CharField(max_length=100,verbose_name="tipo")
     created=models.DateTimeField(auto_now_add=True,verbose_name="Fecha de Creación")
@@ -53,7 +53,9 @@ class Pizza(models.Model):
     pizza_description=models.TextField()
     pizza_image=models.ImageField()
     pizza_price=models.CharField(max_length=10)
+    #Crea un campo que contiene una clave a una tabla que relaciona la pizza con lo que contiene
     Contain=models.ManyToManyField(Contenido,verbose_name="Contenido")
+    #Crea un campo que contiene una clave a una tabla que relaciona la pizza con el tipo de masa
     dough=models.ManyToManyField(MasaDisp,verbose_name="Masa")
     created=models.DateTimeField(auto_now_add=True,verbose_name="Fecha de Creación")
     updated=models.DateTimeField(auto_now=True,verbose_name="Fecha de Edición")

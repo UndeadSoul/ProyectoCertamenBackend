@@ -7,9 +7,11 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta:
         model = User
+        # Establece los campos que se utilizarán en el formulario
         fields = ["username", "email", "password1", "password2"]
 
 class UserLoginForm(AuthenticationForm):
     class Meta:
         model = User
+        # Establece los campos que se utilizarán en el formulario
         fields = ["username", "password"]

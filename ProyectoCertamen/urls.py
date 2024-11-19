@@ -28,9 +28,11 @@ urlpatterns = [
     path('blog-single/', views.blogsingle, name='blogsingle'),
     path('blog/', views.blog, name='blog'),
     path('contact/', views.contact, name='contact'),
+    # Relación entre las urls y las views de menu y sus filtros
     path('menu/', views.menu, name='menu'),
     path('menu-filter-contain/<int:contain_id>/',views.contained,name="menu-filter-contain"),
     path('menu-filter-dough/<int:dough_id>/',views.doughType,name="menu-filter-dough"),
+    # Relación entre las urls y las views de login/register
     path('accounts/login/', viewsrl.LoginView.as_view(), name="login"),
     path('accounts/register/', viewsrl.register, name="register"),
     path('accounts/logout/', LogoutView.as_view(next_page="login"), name="logout"),

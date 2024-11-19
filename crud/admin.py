@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
+# Se registran los modelos para ser visibles en el panel de django
 from .models import Post
 from .models import Chef
 from .models import MasaDisp

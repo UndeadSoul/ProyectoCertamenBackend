@@ -29,14 +29,12 @@ urlpatterns = [
     path('blog/', views.blog, name='blog'),
     path('contact/', views.contact, name='contact'),
     path('menu/', views.menu, name='menu'),
-    #path('menu-filter/', views.menufiltered, name='menufiltered'),
     path('menu-filter-contain/<int:contain_id>/',views.contained,name="menu-filter-contain"),
     path('menu-filter-dough/<int:dough_id>/',views.doughType,name="menu-filter-dough"),
-    path("accounts/login/", viewsrl.LoginView.as_view(), name="login"),
-    path("accounts/register/", viewsrl.register, name="register"),
-    path("accounts/logout/", LogoutView.as_view(next_page="login"), name="logout"),
-    path("", include("registerlogin.urls")),
-    #path('services/', views.services, name='services'),
+    path('accounts/login/', viewsrl.LoginView.as_view(), name="login"),
+    path('accounts/register/', viewsrl.register, name="register"),
+    path('accounts/logout/', LogoutView.as_view(next_page="login"), name="logout"),
+    path('', include("registerlogin.urls")),
 ]
 
 if settings.DEBUG:

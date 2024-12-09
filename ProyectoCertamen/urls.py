@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 from core import views as views
 from registerlogin import views as viewsrl
+from form import views as viewsform
 from django.contrib.auth.views import LogoutView
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,7 +28,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('blog-single/', views.blogsingle, name='blogsingle'),
     path('blog/', views.blog, name='blog'),
-    path('contact/', views.contact, name='contact'),
+    path('contact/', viewsform.contact, name='contact'),
     # Relación entre las urls y las views de menu y sus filtros
     path('menu/', views.menu, name='menu'),
     path('menu-filter-contain/<int:contain_id>/',views.contained,name="menu-filter-contain"),

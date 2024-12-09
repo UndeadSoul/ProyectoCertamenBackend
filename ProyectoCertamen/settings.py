@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'crud',
-    'registerlogin',
+    'registerlogin.apps.RegisterloginConfig',
     'form'
 ]
 

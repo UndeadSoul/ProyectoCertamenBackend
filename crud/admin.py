@@ -8,8 +8,10 @@ from .models import MasaDisp
 from .models import Contenido
 from .models import Pizza
 
+
 admin.site.register(Post)
 admin.site.register(Chef)
 admin.site.register(MasaDisp)
 admin.site.register(Contenido)
 admin.site.register(Pizza)
+

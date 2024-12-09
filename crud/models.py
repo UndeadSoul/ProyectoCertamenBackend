@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 # Create your models here.
 # Modelos primera evaluación
@@ -62,3 +64,4 @@ class Pizza(models.Model):
 
     def __str__(self):
         return "Nombre: "+self.pizza_name
+    
